@@ -4,7 +4,6 @@ response = HTTParty.get('https://makeup-api.herokuapp.com/api/v1/products.json')
 
 # Parse JSON response
 products_data = JSON.parse(response.body)
-
 # Seed products
 products_data.each do |product_data|
   # Skip products without a valid price
