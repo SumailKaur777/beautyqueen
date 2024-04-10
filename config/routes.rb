@@ -1,26 +1,26 @@
 Rails.application.routes.draw do
-  get 'categories/show'
+  # Define routes for categories
+  resources :categories, only: [:show]
+
+  # Define routes for products
+  resources :products
+
+  # Set root path
+  root 'products#index'
+
+  # Define routes for Devise users
   devise_for :users
-  get 'products/index'
+
+  # Define routes for ActiveAdmin
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Define routes for admin namespace
+  namespace :admin do
+    resources :products, only: [:create, :update]
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-# config/routes.rb
-resources :categories, only: [:show]
-
-  # Defines the root path route ("/")
-  # root "posts#index"
-  #namespace :store do
-  resources :products
-  # config/routes.rb
-  root 'home#index'
-namespace :admin do
-  resources :products, only: [:create, :update]
-end
-
-
 end

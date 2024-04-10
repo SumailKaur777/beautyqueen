@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
-  
   def index
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(10) # Paginate with 10 products per page
+
     if params[:search].present?
-      @products = @products.where("name like ?" , "%#{params[:search]}%")
+      @products = @products.where("name like ?", "%#{params[:search]}%")
     end
   end
 
@@ -53,6 +53,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price , :image)
+    params.require(:product).permit(:name, :description, :price, :image)
   end
 end

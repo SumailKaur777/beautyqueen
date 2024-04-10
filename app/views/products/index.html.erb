@@ -1,11 +1,19 @@
 <h1>Categories</h1>
 <ul>
+  <li><%= link_to "All Categories", products_path %></li>
   <% Category.all.each do |category| %>
-    <li><%= link_to category.name, category_path(category) %></li>
+    <li><%= link_to category.name, products_path(category: category.name) %></li>
   <% end %>
 </ul>
 
 <h1>Products</h1>
+<%= form_tag(products_path, method: :get) do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by keyword" %>
+   <%= select_tag :category, options_for_select(["lipstick", "lip_gloss", "pencil", "liquid"], params[:category]), include_blank: "Select category" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
 <ul>
   <% @products.each do |product| %>
     <li>
@@ -13,12 +21,16 @@
       <p><%= product.description %></p>
       <p><%= number_to_currency(product.price) %></p>
       <% if product.image.attached? %>
-        <% product.image.each do |image| %>
-          <%= image_tag image %>
-        <% end %>
+        <%= image_tag product.image.variant(resize: "100x100") %>
       <% else %>
         <p>No image available</p>
+      <% end %>
+      <% if product.category.present? %>
+        <p>Category: <%= product.category.name %></p>
+      <% else %>
+        <p>Category: Not specified</p>
       <% end %>
     </li>
   <% end %>
 </ul>
+# <%= paginate @products %>

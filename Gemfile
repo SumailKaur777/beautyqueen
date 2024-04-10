@@ -9,6 +9,13 @@ gem 'faker'
 
 gem 'httparty'
 
+
+
+# Gemfile
+gem 'kaminari'
+
+
+
 gem 'activeadmin'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
