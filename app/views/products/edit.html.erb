@@ -1,0 +1,14 @@
+<%= form_with(model: @product, local: true) do |form| %>
+  <!-- Other fields for product name, description, price, etc. -->
+  
+  <% if current_user.admin? %>
+    <div class="field">
+      <%= form.label :images, 'Upload Images' %>
+      <%= form.file_field :images, multiple: true %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

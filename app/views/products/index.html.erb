@@ -1,0 +1,24 @@
+<h1>Categories</h1>
+<ul>
+  <% Category.all.each do |category| %>
+    <li><%= link_to category.name, category_path(category) %></li>
+  <% end %>
+</ul>
+
+<h1>Products</h1>
+<ul>
+  <% @products.each do |product| %>
+    <li>
+      <strong><%= product.name %></strong>
+      <p><%= product.description %></p>
+      <p><%= number_to_currency(product.price) %></p>
+      <% if product.image.attached? %>
+        <% product.image.each do |image| %>
+          <%= image_tag image %>
+        <% end %>
+      <% else %>
+        <p>No image available</p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
