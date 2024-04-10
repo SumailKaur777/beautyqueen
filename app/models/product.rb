@@ -1,6 +1,7 @@
 # app/models/product.rb
 class Product < ApplicationRecord
     # Associations
+   
     has_one_attached :image
     belongs_to :category
     # Whitelist associations for searching
