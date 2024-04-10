@@ -1,9 +1,11 @@
-# app/controllers/store_products_controller.rb
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @products = Product.all
+    if params[:search].present?
+      @products = @products.where("name like ?" , "%#{params[:search]}%")
+    end
   end
 
   def show
@@ -34,6 +36,11 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def search
+    @products = Product.search(params[:keyword], params[:category])
+    render :index
   end
 
   def destroy
