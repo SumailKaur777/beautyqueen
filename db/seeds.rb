@@ -1,5 +1,4 @@
 require 'httparty'
-
 # Fetch data from the API
 response = HTTParty.get('https://makeup-api.herokuapp.com/api/v1/products.json')
 
