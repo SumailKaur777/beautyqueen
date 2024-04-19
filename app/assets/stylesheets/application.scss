@@ -1,0 +1,34 @@
+// Define variables
+$primary-color: #007bff;
+
+// Nest selectors
+.header {
+  background-color: $primary-color;
+  color: white;
+
+  // Nest further
+  nav {
+    ul {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        margin-right: 10px;
+
+        // Use variables and nesting
+        &:hover {
+          text-decoration: underline;
+
+          /* Assuming your product images are wrapped in an 'img' tag with a class of 'product-image' */
+          .product-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+          }
+          
+  
+        }
+      }
+    }
+  }
+}

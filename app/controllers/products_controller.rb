@@ -1,18 +1,40 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :authenticate_user!, except: [:index, :show, :_product_new, :_product_recently_updated, :_product_on_sale]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  
   def index
     @products = Product.all.page(params[:page]).per(10) # Paginate with 10 products per page
 
     if params[:search].present?
-      @products = @products.where("name like ?", "%#{params[:search]}%")
+      @products = @products.where("name LIKE ?", "%#{params[:search]}%")
+    elsif params[:category].present?
+      category = Category.find_by(name: params[:category])
+      if category
+        @products = category.products.page(params[:page]).per(10)
+      else
+        @products = []
+      end
     end
+
+    @products_on_sale = Product.where(on_sale: true)
+    @new_products = Product.where('created_at >= ?', 3.days.ago)
+    @recently_updated_products = Product.where('updated_at >= ?', 3.days.ago)
   end
 
   def show
     @product = Product.find(params[:id])
+    
+    if @product.on_sale?
+      render partial: 'product_on_sale', locals: { product: @product }
+    elsif @product.created_at >= 3.days.ago
+      render partial: 'product_new', locals: { product: @product }
+    elsif @product.updated_at >= 3.days.ago
+      render partial: 'product_recently_updated', locals: { product: @product }
+    else
+      render partial: 'product', locals: { product: @product }
+    end
   end
-
+    
   def new
     @product = Product.new
   end
@@ -37,11 +59,6 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def search
-    @products = Product.search(params[:keyword], params[:category])
-    render :index
   end
 
   def destroy

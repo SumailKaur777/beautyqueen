@@ -1,6 +1,7 @@
 <%= form_with(model: @product, local: true) do |form| %>
   <!-- Other fields for product name, description, price, etc. -->
-  
+  <%= render 'form', product: @product %>
+
   <% if current_user.admin? %>
     <div class="field">
       <%= form.label :images, 'Upload Images' %>

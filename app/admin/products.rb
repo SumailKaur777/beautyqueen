@@ -1,6 +1,6 @@
 # app/admin/products.rb
 ActiveAdmin.register Product do
-  permit_params :name, :description, :price, :image
+  permit_params :name, :description, :price, :image, :category_id
 
   filter :images_attachments
   
@@ -10,6 +10,7 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :price
       f.input :image, as: :file
+      f.input :category_id
     end
     f.actions
   end

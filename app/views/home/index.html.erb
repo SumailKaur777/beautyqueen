@@ -6,15 +6,8 @@
     <title>Beauty Queen Salon</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
-    <style>
-        
-    </style>
 </head>
-
-
 <body class="bg-gray-100 font-sans">
-
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg">
         <div class="container mx-auto px-4">
@@ -23,18 +16,17 @@
                 <ul class="flex space-x-4">
                     <li><a href="#" class="text-gray-600 hover:text-gray-800">Home</a></li>
                     <li><a href="#about" class="text-gray-600 hover:text-gray-800">About</a></li>
-                    <li><a href="#products" class="text-gray-600 hover:text-gray-800">Products</a></li>
+                    <li><a href="products#index" class="text-gray-600 hover:text-gray-800">Products</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-cover bg-center py-24 px-4 text-center" style="background-image: url('https://www.bing.com/th?id=OIP.XTuuZblOIUh9_7dso2uDbgHaJ4&pid=ImgRaw');">
-    <h1 class="text-4xl font-bold text-black mb-4">Welcome to Beauty Queen Salon</h1>
-    <p class="text-lg text-black">Experience luxury beauty services and premium products</p>
-</header>
-
+    <header class="bg-cover bg-center py-24 px-4 text-center" style="background-image: url('https://i.pinimg.com/originals/66/16/11/6616119fc8c9e6f6374c4d5682f6f916.jpg');">
+        <h1 class="text-4xl font-bold text-black mb-4">Welcome to Beauty Queen Salon</h1>
+        <p class="text-lg text-black">Experience luxury beauty services and premium products</p>
+    </header>
 
     <!-- About Section -->
     <section id="about" class="container mx-auto py-16 px-4">
@@ -44,26 +36,33 @@
         </div>
     </section>
 
-   <!-- Categories Section -->
-<section id="categories" class="bg-gray-100 py-16 px-4">
-    <div class="container mx-auto">
-        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Categories</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Category Cards -->
-            <% ['Pencil', 'Lipstick', 'Liquid'].each do |category_name| %>
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2"><%= category_name %></h3>
-                    <!-- You can add more details about the category here if needed -->
+    <!-- Categories Section -->
+    <section id="categories" class="bg-gray-100 py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Category Cards -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pencil</h3>
+                        <!-- You can add more details about the category here if needed -->
+                    </div>
                 </div>
-            
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Lipstick</h3>
+                        <!-- You can add more details about the category here if needed -->
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Liquid</h3>
+                        <!-- You can add more details about the category here if needed -->
+                    </div>
+                </div>
             </div>
-            <% end %>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <!-- Products Section -->
     <section id="products" class="bg-gray-50 py-16 px-4">
@@ -72,68 +71,42 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Product Cards -->
                 <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                   <img src="<%= asset_path 'lipsticks.jpg' %>" alt="makeup pic" class="w-full h-64 object-cover">
-
-
+                    <img src="lipsticks.jpg" alt="makeup pic" class="w-full h-64 object-cover">
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Revlon</h3>
                         <p class="text-gray-700">Description of the product. Long lasting lipsticks that come in a wide variety of shades.</p>
                         <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
                     </div>
                 </div>
-
                 <!-- Product Cards -->
-<!-- Product 2: Maybelline Fit Me Matte + Poreless Foundation -->
-<div class="bg-white shadow-lg rounded-lg overflow-hidden">
-   <img src="<%= asset_path 'maybelline_foundation.jpg' %>" alt="Maybelline Fit Me Matte + Poreless Foundation" class="w-full h-64 object-cover">
-    <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-800 mb-2">Maybelline Fit Me Matte + Poreless Foundation</h3>
-        <p class="text-gray-700">This foundation mattifies and refines pores, leaving a natural, seamless finish. Available in a range of shades to match every skin tone.</p>
-        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
-    </div>
-</div>
-
-<!-- Product 3: Neutrogena Hydro Boost Water Gel -->
-<div class="bg-white shadow-lg rounded-lg overflow-hidden">
-   <img src="<%= asset_path 'neutrogena-gel.jpg' %>" alt="Neutrogena Hydro Boost Water Gel" class="w-full h-64 object-cover">
-    <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-800 mb-2">Neutrogena Hydro Boost Water Gel</h3>
-        <p class="text-gray-700">This lightweight, non-comedogenic gel moisturizer hydrates skin instantly and continuously for soft, supple skin all day long.</p>
-        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
-    </div>
-</div>
-
-<!-- Product 4: NYX Professional Makeup Butter Gloss -->
-<div class="bg-white shadow-lg rounded-lg overflow-hidden">
-   <img src="<%= asset_path 'nyx_gloss.jpg' %>" alt="NYX Professional Makeup Butter Gloss" class="w-full h-64 object-cover">
-    <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-800 mb-2">NYX Professional Makeup Butter Gloss</h3>
-        <p class="text-gray-700">Get creamy, sheer-to-medium coverage and a buttery smooth texture with NYX Butter Gloss. Available in a variety of shades.</p>
-        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
-    </div>
-</div>
-
-<!-- Product 5: Cetaphil Gentle Skin Cleanser -->
-<div class="bg-white shadow-lg rounded-lg overflow-hidden">
-   <img src="<%= asset_path 'cetaphil_cleanser.jpg' %>" alt="Cetaphil Gentle Skin Cleanser" class="w-full h-64 object-cover">
-    <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-800 mb-2">Cetaphil Gentle Skin Cleanser</h3>
-        <p class="text-gray-700">Cetaphil Gentle Skin Cleanser is a mild, non-irritating formula that softens as it cleanses, leaving skin smooth and refreshed.</p>
-        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
-    </div>
-</div>
-
-<!-- Add more products as needed -->
-
-                <!-- Repeat product cards for other products -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="maybelline_foundation.jpg" alt="Maybelline Fit Me Matte + Poreless Foundation" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Maybelline Fit Me Matte + Poreless Foundation</h3>
+                        <p class="text-gray-700">This foundation mattifies and refines pores, leaving a natural, seamless finish. Available in a range of shades to match every skin tone.</p>
+                        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
+                    </div>
+                </div>
+                <!-- Product Cards -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="neutrogena-gel.jpg" alt="Neutrogena Hydro Boost Water Gel" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Neutrogena Hydro Boost Water Gel</h3>
+                        <p class="text-gray-700">This lightweight, non-comedogenic gel moisturizer hydrates skin instantly and continuously for soft, supple skin all day long.</p>
+                        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
+                    </div>
+                </div>
+                <!-- Product Cards -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="nyx_gloss.jpg" alt="NYX Professional Makeup Butter Gloss" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">NYX Professional Makeup Butter Gloss</h4>
+                        <p class="text-gray-700">This lightweight, non-comedogenic lip gloss hydrates your lips instantly and continuously for soft, supple lips all day long.</p>
+                        <button class="mt-4 py-2 px-4 bg-blue-500 text-white hover:bg-blue-600 rounded-md">Shop Now</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-8 px-4 text-center text-white">
-        <p>&copy; 2024 Beauty Queen Salon. All rights reserved.</p>
-    </footer>
-
 </body>
 </html>

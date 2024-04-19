@@ -16,6 +16,7 @@ products_data.each do |product_data|
     name: product_data['name'],
     description: product_data['description'],
     price: price
+    # category_id: 
     # Add other fields as necessary
   )
 end

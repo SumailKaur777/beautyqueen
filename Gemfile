@@ -8,8 +8,9 @@ gem 'sassc'
 gem 'faker'
 
 gem 'httparty'
+gem 'sass-rails'
 
-
+gem 'activestorage'
 
 # Gemfile
 gem 'kaminari'

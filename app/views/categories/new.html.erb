@@ -1,0 +1,12 @@
+<%= form_with(model: @category, local: true) do |form| %>
+  <!-- Other fields for product name, description, price, etc. -->
+  
+    <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
